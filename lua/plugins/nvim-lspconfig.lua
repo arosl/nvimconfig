@@ -104,6 +104,13 @@ local config = function()
 		filetypes = { "nix", },
   })
 
+  -- golang
+  lspconfig.gopls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = { "go", },
+  })
+
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
@@ -116,6 +123,8 @@ local config = function()
 	local hadolint = require("efmls-configs.linters.hadolint")
   local alejandra = require("efmls-configs.formatters.alejandra")
   local statix = require("efmls-configs.linters.statix")
+  local gofmt = require("efmls-configs.formatters.gofmt")
+  local golint = require("efmls-configs.linters.golint")
 
 	-- configure efm server
 	lspconfig.efm.setup({
@@ -134,6 +143,7 @@ local config = function()
 			"sh",
 			"typescript",
 			"typescriptreact",
+      "go",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -159,6 +169,7 @@ local config = function()
 				sh = { shellcheck, shfmt },
 				typescript = { eslint_d, prettier_d },
 				typescriptreact = { eslint_d, prettier_d },
+        go = {golint, gofmt},
 			},
 		},
 	})
