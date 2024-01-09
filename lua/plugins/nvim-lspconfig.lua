@@ -38,7 +38,10 @@ local config = function()
   lspconfig.jsonls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-    filetypes = { "json", "jsonc" },
+    filetypes = {
+      "json",
+      "jsonc",
+    },
   })
 
   -- python
@@ -72,7 +75,10 @@ local config = function()
   lspconfig.bashls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-    filetypes = { "sh", "aliasrc" },
+    filetypes = {
+      "sh",
+      "aliasrc",
+    },
   })
 
   -- typescriptreact, javascriptreact, css, sass, scss, less, svelte, vue
@@ -131,6 +137,7 @@ local config = function()
     filetypes = {
       "css",
       "docker",
+      "go",
       "html",
       "javascript",
       "javascriptreact",
@@ -143,7 +150,6 @@ local config = function()
       "sh",
       "typescript",
       "typescriptreact",
-      "go",
     },
     init_options = {
       documentFormatting = true,
@@ -157,6 +163,7 @@ local config = function()
       languages = {
         css = { prettier_d },
         docker = { hadolint, prettier_d },
+        go = {golint, gofmt},
         html = { prettier_d },
         javascript = { eslint_d, prettier_d },
         javascriptreact = { eslint_d, prettier_d },
@@ -169,7 +176,6 @@ local config = function()
         sh = { shellcheck, shfmt },
         typescript = { eslint_d, prettier_d },
         typescriptreact = { eslint_d, prettier_d },
-        go = {golint, gofmt},
       },
     },
   })
